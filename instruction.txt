@@ -1,0 +1,22 @@
+Phase 1 - Core UI/UX Improvements:
+[x] Add a sticky header with smooth scroll behavior
+[x] Implement a progress bar showing scroll position
+[x] Add a "Back to Top" button
+[x] Improve mobile responsiveness
+[x] Add subtle animations for section transitions
+[x] Implement hover effects on cards and buttons
+[x] Add loading states and transitions
+[x] Improve typography hierarchy
+
+Phase 2 - Skills Enhancement:
+[x] Add skill progress bars
+[x] Implement skill categories with icons
+[x] Add tooltips for skill descriptions
+[ ] Create an interactive skill tree
+
+Phase 2.1 - Extra UI Improvements
+[x] Add custom cursor effects (WHILE THE CURSOR IS MOVING)
+[x] Include animated backgrounds (3D BACKGROUND)
+[ ] Add hover state animations 
+[ ] Include loading animations
+[ ] Add multiple color themes(KEEP THE DARK/LIGHT MODE JUST ADD OTHER COLOR OPTION)
