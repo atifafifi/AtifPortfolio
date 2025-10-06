@@ -1,39 +1,87 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { motion } from "framer-motion"
-import { Code, Database, Server, Wrench } from "lucide-react"
-import { SkillProgress } from "./skill-progress"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
+import { Code, Database, Server, Wrench } from "lucide-react";
+import { SkillProgress } from "./skill-progress";
 
 const skillCategories = [
   {
     title: "Frontend Development",
     icon: Code,
     skills: [
+      // --- Expert Libraries (90+) ---
+      {
+        name: "HTML5",
+        level: 95,
+        icon: Code,
+        description:
+          "Expert in building semantic, accessible, and well-structured markup for modern web pages.",
+      },
+      {
+        name: "CSS3",
+        level: 90,
+        icon: Code,
+        description:
+          "Mastery of modern styling techniques, including Grid, Flexbox, transitions, and responsive design.",
+      },
       {
         name: "React",
-        level: 85,
+        level: 90,
         icon: Code,
-        description: "Building interactive user interfaces with React and Next.js",
+        description:
+          "Expert in building scalable, interactive user interfaces using functional components, Hooks, and advanced state management.",
+      },
+      {
+        name: "Bootstrap",
+        level: 90,
+        icon: Code,
+        description:
+          "Proficient in rapid prototyping and full responsive design implementation using the Bootstrap framework.",
+      },
+      {
+        name: "Icon Libraries (Font Awesome & MDI)",
+        level: 95,
+        icon: Code,
+        description:
+          "Expertise in integrating and customizing vast icon sets like Font Awesome and Material Design Icons for rich UI elements.",
+      },
+      // --- Intermediate / Beginner Tools (40-75) ---
+      {
+        name: "Tailwind CSS",
+        level: 75, // Intermediate
+        icon: Code,
+        description:
+          "Intermediate ability in applying utility classes for quick, highly customized styling without writing traditional CSS.",
       },
       {
         name: "TypeScript",
-        level: 80,
+        level: 70, // Intermediate
         icon: Code,
-        description: "Writing type-safe code and improving development experience",
+        description:
+          "Intermediate knowledge in applying static typing to enhance code quality and improve long-term project maintainability.",
       },
       {
-        name: "Tailwind CSS",
-        level: 90,
+        name: "Next.js",
+        level: 65, // Intermediate
         icon: Code,
-        description: "Creating responsive and modern designs with utility-first CSS",
+        description:
+          "Working knowledge of full-stack development, including Server-Side Rendering (SSR) and routing for performant applications.",
+      },
+      {
+        name: "shadcn/ui",
+        level: 60, // Intermediate
+        icon: Code,
+        description:
+          "Ability to customize and integrate the component library built on top of Tailwind CSS and Radix UI for consistent design.",
       },
       {
         name: "Three.js",
-        level: 75,
+        level: 50, // Beginner/Intermediate
         icon: Code,
-        description: "Developing 3D visualizations and interactive experiences",
+        description:
+          "Basic experience with creating simple 3D scenes and interactive visuals for the web.",
       },
     ],
   },
@@ -45,25 +93,43 @@ const skillCategories = [
         name: "Node.js",
         level: 80,
         icon: Server,
-        description: "Building scalable server-side applications",
+        description:
+          "Building scalable **server-side applications** and RESTful APIs using the Express framework.",
+      },
+      {
+        name: "Next.js",
+        level: 50,
+        icon: Server, // Icon has been added
+        description:
+          "Developing **server-side rendered** (SSR) and static web applications, leveraging its full-stack capabilities.",
       },
       {
         name: "Python",
         level: 85,
         icon: Server,
-        description: "Developing data processing and automation scripts",
+        description:
+          "Developing robust **data processing**, machine learning models, and automation scripts.",
       },
       {
         name: "Java",
         level: 75,
         icon: Server,
-        description: "Creating enterprise-level applications",
+        description:
+          "Creating secure, **enterprise-level applications** and microservices using Spring Boot.",
       },
       {
         name: "PHP",
         level: 80,
         icon: Server,
-        description: "Building dynamic web applications",
+        description:
+          "Developing **dynamic web applications** and content management systems (CMS) with Laravel/Symfony.",
+      },
+      {
+        name: "C#",
+        level: 50,
+        icon: Server,
+        description:
+          "Implementing **server-side logic** and API endpoints using **ASP.NET Core** and Entity Framework.",
       },
     ],
   },
@@ -95,6 +161,18 @@ const skillCategories = [
         icon: Database,
         description: "Containerizing applications for consistent deployment",
       },
+      {
+        name: "MSSQL",
+        level: 70,
+        icon: Database,
+        description: "Managing SQL Server databases and writing queries",
+      },
+      {
+        name: "SQLLite",
+        level: 47,
+        icon: Database,
+        description: "Managing lightweight databases and writing queries",
+      },
     ],
   },
   {
@@ -105,29 +183,61 @@ const skillCategories = [
         name: "Git",
         level: 90,
         icon: Wrench,
-        description: "Version control and collaborative development",
+        description:
+          "Proficient **version control** using branching, merging, and collaborative development workflows.",
       },
       {
         name: "Figma",
         level: 85,
         icon: Wrench,
-        description: "Designing and prototyping user interfaces",
+        description:
+          "**Designing and prototyping** user interfaces (UI) and user experiences (UX) for web and mobile.",
       },
       {
         name: "VS Code",
         level: 95,
         icon: Wrench,
-        description: "Efficient code editing and development workflow",
+        description:
+          "Mastery of the IDE for efficient **code editing**, debugging, and customized development workflows.",
       },
       {
         name: "Linux",
         level: 80,
         icon: Wrench,
-        description: "System administration and command-line operations",
+        description:
+          "**System administration**, shell scripting, and command-line operations for deployment environments.",
+      },
+      {
+        name: "Cursor Agent/CLI",
+        level: 75,
+        icon: Wrench,
+        description:
+          "Utilizing **AI-driven CLI tools** to generate, debug, and refactor code, accelerating development tasks.",
+      },
+      {
+        name: "AI-Assisted Workflow",
+        level: 85,
+        icon: Wrench,
+        description:
+          "Integrating tools like **GitHub Copilot, Gemini, and GPT** for faster documentation, boilerplate generation, and complex problem-solving.",
+      },
+      {
+        name: "n8n (Workflow Automation)",
+        level: 40, // Beginner Level
+        icon: Wrench,
+        description:
+          "Basic ability to **create and deploy simple workflows** for integrating apps and automating data transfer using its visual editor.",
+      },
+      {
+        name: "Low-Code Automation (e.g., SimAI/Zapier)",
+        level: 45, // Beginner Level
+        icon: Wrench,
+        description:
+          "Experience setting up **simple, event-driven automations** to connect various services and improve productivity.",
       },
     ],
   },
-]
+];
 
 export function Skills() {
   return (
@@ -144,8 +254,8 @@ export function Skills() {
             Technical Skills
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and proficiency levels
-            across various technologies and tools.
+            A comprehensive overview of my technical expertise and proficiency
+            levels across various technologies and tools.
           </p>
         </motion.div>
 
@@ -182,5 +292,5 @@ export function Skills() {
         </div>
       </div>
     </section>
-  )
+  );
 }

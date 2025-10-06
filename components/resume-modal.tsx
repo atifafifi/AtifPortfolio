@@ -36,9 +36,9 @@ const resumeData = {
     email: "atifafifi16@gmail.com",
     phone: "+6014-6975630",
     location: "Penang, Malaysia",
-    website: "johndoe.dev",
-    linkedin: "linkedin.com/in/johndoe",
-    github: "github.com/atifafifi",
+    website: "atifafifi.dev",
+    linkedin: "linkedin.com/in/atifafifi",
+    github: "github.com/atsen1701",
   },
   summary:
     "Junior Software Engineer passionate about full-stack development and IT systems. Experienced in React, Java, Python, and IoT projects, with hands-on exposure to Three.js for creating interactive 3D interfaces. Currently contributing to system development and debugging at SEA Asia Pacific Sdn. Bhd., while continually expanding knowledge in modern frameworks and backend technologies. Committed to building efficient, user-focused solutions and growing as a well-rounded developer.",
@@ -85,17 +85,17 @@ const resumeData = {
     },
   ],
   skills: {
-    frontend: ["React", "Next.js", "TypeScript", "Vue.js", "Tailwind CSS", "HTML5", "CSS3", "Three.js"],
-    backend: ["Node.js", "Python", "PHP", "Java", "JavaScript", "REST APIs", "Laravel"],
+    frontend: ["React", "Next.js", "TypeScript", "Vue.js", "Tailwind CSS", "HTML5", "CSS", "JavaScript", "Three.js","Blazor","Bootstrap"],
+    backend: ["Node.js", "Python", "PHP", "Java", "JavaScript", "REST APIs", "Laravel","C#"],
     database: ["FireBase", "MongoDB", "Redis", "MySQL", "Prisma"],
     cloud: ["AWS", "Vercel", "Docker", "Kubernetes", "CI/CD"],
     tools: ["Git", "Figma", "VS Code"],
   },
-  certifications: [
-    "AWS Certified Developer Associate",
-    "Google Cloud Professional Developer",
-    "MongoDB Certified Developer",
-  ],
+  // certifications: [
+  //   "AWS Certified Developer Associate",
+  //   "Google Cloud Professional Developer",
+  //   "MongoDB Certified Developer",
+  // ],
 }
 
 export function ResumeModal() {
@@ -286,31 +286,6 @@ export function ResumeModal() {
                     </div>
                   </div>
                 ))}
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Certifications */}
-          <motion.div {...fadeIn}>
-            <Card className="border-2 border-indigo-500/20 hover:border-indigo-500/40 transition-colors">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <Award className="h-5 w-5 text-indigo-500" />
-                  Certifications
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {resumeData.certifications.map((cert) => (
-                    <Badge
-                      key={cert}
-                      variant="outline"
-                      className="bg-indigo-500/10 text-indigo-500 border-indigo-500/20 hover:bg-indigo-500/20 transition-colors"
-                    >
-                      {cert}
-                    </Badge>
-                  ))}
-                </div>
               </CardContent>
             </Card>
           </motion.div>

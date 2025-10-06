@@ -18,17 +18,18 @@ export function AnimatedBackground() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     containerRef.current.appendChild(renderer.domElement)
 
-    // Create multiple particle systems with enhanced effects
-    const createParticleSystem = (count: number, size: number, color: string, speed: number, spread: number) => {
+    // Create star field with twinkling effects
+    const createStarSystem = (count: number, size: number, color: string, spread: number) => {
       const geometry = new THREE.BufferGeometry()
       const positions = new Float32Array(count * 3)
       const colors = new Float32Array(count * 3)
       const colorObj = new THREE.Color(color)
-      const velocities = new Float32Array(count * 3)
+      const opacities = new Float32Array(count)
+      const twinkleSpeeds = new Float32Array(count)
 
       for (let i = 0; i < count; i++) {
         const i3 = i * 3
-        // Create a more spherical distribution
+        // Create spherical distribution for galaxy
         const theta = Math.random() * Math.PI * 2
         const phi = Math.acos(2 * Math.random() - 1)
         const radius = spread * Math.cbrt(Math.random())
@@ -37,15 +38,13 @@ export function AnimatedBackground() {
         positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta)
         positions[i3 + 2] = radius * Math.cos(phi)
 
-        // Add slight color variation
-        colors[i3] = colorObj.r + (Math.random() - 0.5) * 0.1
-        colors[i3 + 1] = colorObj.g + (Math.random() - 0.5) * 0.1
-        colors[i3 + 2] = colorObj.b + (Math.random() - 0.5) * 0.1
+        // Galaxy colors: whites, blues, purples
+        colors[i3] = colorObj.r + (Math.random() - 0.5) * 0.2
+        colors[i3 + 1] = colorObj.g + (Math.random() - 0.5) * 0.2
+        colors[i3 + 2] = colorObj.b + (Math.random() - 0.5) * 0.2
 
-        // Add velocity for movement
-        velocities[i3] = (Math.random() - 0.5) * 0.001
-        velocities[i3 + 1] = (Math.random() - 0.5) * 0.001
-        velocities[i3 + 2] = (Math.random() - 0.5) * 0.001
+        opacities[i] = 0.3 + Math.random() * 0.7
+        twinkleSpeeds[i] = 0.01 + Math.random() * 0.02
       }
 
       geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3))
@@ -55,23 +54,53 @@ export function AnimatedBackground() {
         size,
         vertexColors: true,
         transparent: true,
-        opacity: 0.8,
+        opacity: 1.0,
         blending: THREE.AdditiveBlending,
         sizeAttenuation: true,
       })
 
-      const particles = new THREE.Points(geometry, material)
-      particles.userData.speed = speed
-      particles.userData.velocities = velocities
-      return particles
+      const stars = new THREE.Points(geometry, material)
+      stars.userData.opacities = opacities
+      stars.userData.twinkleSpeeds = twinkleSpeeds
+      stars.userData.initialOpacities = opacities.slice()
+      return stars
     }
 
-    // Create three layers of particles with different characteristics
-    const particles1 = createParticleSystem(2000, 0.03, "#4f46e5", 0.0003, 8) // Indigo - outer layer
-    const particles2 = createParticleSystem(1500, 0.02, "#7c3aed", 0.0002, 6) // Violet - middle layer
-    const particles3 = createParticleSystem(1000, 0.015, "#db2777", 0.0001, 4) // Pink - inner layer
+    // Create multiple star layers for galaxy effect
+    const stars1 = createStarSystem(3000, 0.02, "#ffffff", 10) // White stars - main field
+    const stars2 = createStarSystem(2000, 0.015, "#87ceeb", 8) // Light blue - distant
+    const stars3 = createStarSystem(1500, 0.025, "#9370db", 6) // Purple - closer
 
-    scene.add(particles1, particles2, particles3)
+    scene.add(stars1, stars2, stars3)
+
+    // Comet system
+    const comets: { position: THREE.Vector3; velocity: THREE.Vector3; lifetime: number; point: THREE.Points }[] = []
+    const cometGeometry = new THREE.BufferGeometry()
+    cometGeometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array([0, 0, 0]), 3))
+    const cometMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.1, transparent: true, opacity: 1.0 })
+
+    const createComet = () => {
+      const startX = (Math.random() - 0.5) * 20
+      const startY = (Math.random() - 0.5) * 20
+      const startZ = -5
+
+      const point = new THREE.Points(cometGeometry.clone(), cometMaterial.clone())
+      point.position.set(startX, startY, startZ)
+      scene.add(point)
+
+      const velocity = new THREE.Vector3(
+        (Math.random() - 0.5) * 0.5,
+        (Math.random() - 0.5) * 0.5,
+        0.3
+      )
+
+      comets.push({
+        position: point.position,
+        velocity,
+        lifetime: 200, // frames
+        point
+      })
+    }
 
     // Position camera
     camera.position.z = 5
@@ -91,7 +120,7 @@ export function AnimatedBackground() {
 
     window.addEventListener("mousemove", handleMouseMove)
 
-    // Animation with enhanced effects
+    // Animation with galaxy effects
     const animate = () => {
       requestAnimationFrame(animate)
 
@@ -101,44 +130,53 @@ export function AnimatedBackground() {
       currentX += (targetX - currentX) * 0.05
       currentY += (targetY - currentY) * 0.05
 
-      // Update particle positions
-      const updateParticles = (particles: THREE.Points) => {
-        const positions = particles.geometry.attributes.position.array as Float32Array
-        const velocities = particles.userData.velocities as Float32Array
+      // Twinkle stars
+      const twinkleStars = (stars: THREE.Points) => {
+        const opacities = stars.userData.opacities as Float32Array
+        const twinkleSpeeds = stars.userData.twinkleSpeeds as Float32Array
+        const initialOpacities = stars.userData.initialOpacities as Float32Array
 
-        for (let i = 0; i < positions.length; i += 3) {
-          positions[i] += velocities[i]
-          positions[i + 1] += velocities[i + 1]
-          positions[i + 2] += velocities[i + 2]
-
-          // Boundary check and reset
-          const distance = Math.sqrt(
-            positions[i] * positions[i] +
-            positions[i + 1] * positions[i + 1] +
-            positions[i + 2] * positions[i + 2]
-          )
-
-          if (distance > 10) {
-            positions[i] *= 0.9
-            positions[i + 1] *= 0.9
-            positions[i + 2] *= 0.9
-          }
+        for (let i = 0; i < opacities.length; i++) {
+          opacities[i] = initialOpacities[i] + Math.sin(Date.now() * twinkleSpeeds[i]) * 0.3
+          opacities[i] = Math.max(0.1, Math.min(1.0, opacities[i]))
         }
 
-        particles.geometry.attributes.position.needsUpdate = true
+        (stars.material as THREE.PointsMaterial).opacity = 1.0 // Update if needed, but individual opacities not directly supported
       }
 
-      updateParticles(particles1)
-      updateParticles(particles2)
-      updateParticles(particles3)
+      twinkleStars(stars1)
+      twinkleStars(stars2)
+      twinkleStars(stars3)
 
-      // Rotate particles with mouse interaction
-      particles1.rotation.x += particles1.userData.speed + currentY * 0.5
-      particles1.rotation.y += particles1.userData.speed + currentX * 0.5
-      particles2.rotation.x -= particles2.userData.speed + currentY * 0.3
-      particles2.rotation.y -= particles2.userData.speed + currentX * 0.3
-      particles3.rotation.x += particles3.userData.speed + currentY * 0.2
-      particles3.rotation.y += particles3.userData.speed + currentX * 0.2
+      // Rotate stars with mouse interaction for galaxy movement
+      stars1.rotation.x += 0.0002 + currentY * 0.3
+      stars1.rotation.y += 0.0002 + currentX * 0.3
+      stars2.rotation.x -= 0.0001 + currentY * 0.2
+      stars2.rotation.y -= 0.0001 + currentX * 0.2
+      stars3.rotation.x += 0.0003 + currentY * 0.1
+      stars3.rotation.y += 0.0003 + currentX * 0.1
+
+      // Update comets
+      for (let i = comets.length - 1; i >= 0; i--) {
+        const comet = comets[i]
+        comet.point.position.add(comet.velocity)
+        comet.lifetime--
+
+        // Fade out
+        (comet.point.material as THREE.PointsMaterial).opacity = comet.lifetime / 200
+
+        if (comet.lifetime <= 0) {
+          scene.remove(comet.point)
+          comet.point.geometry.dispose()
+          ;(comet.point.material as THREE.Material).dispose()
+          comets.splice(i, 1)
+        }
+      }
+
+      // Randomly create comets
+      if (Math.random() < 0.005) { // Adjust probability for comet frequency
+        createComet()
+      }
 
       renderer.render(scene, camera)
     }
@@ -164,13 +202,19 @@ export function AnimatedBackground() {
       window.removeEventListener("resize", handleResize)
       clearTimeout(resizeTimeout)
       containerRef.current?.removeChild(renderer.domElement)
-      scene.remove(particles1, particles2, particles3)
-      particles1.geometry.dispose()
-      particles1.material.dispose()
-      particles2.geometry.dispose()
-      particles2.material.dispose()
-      particles3.geometry.dispose()
-      particles3.material.dispose()
+      scene.remove(stars1, stars2, stars3)
+      stars1.geometry.dispose()
+      ;(stars1.material as THREE.Material).dispose()
+      stars2.geometry.dispose()
+      ;(stars2.material as THREE.Material).dispose()
+      stars3.geometry.dispose()
+      ;(stars3.material as THREE.Material).dispose()
+      // Dispose comets
+      comets.forEach(comet => {
+        scene.remove(comet.point)
+        comet.point.geometry.dispose()
+        ;(comet.point.material as THREE.Material).dispose()
+      })
       renderer.dispose()
     }
   }, [])

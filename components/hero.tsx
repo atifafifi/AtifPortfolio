@@ -67,7 +67,7 @@ export function Hero() {
             className="flex justify-center space-x-6"
           >
             <a
-              href="https://github.com/atifafifi"
+              href="https://github.com/atsen1701"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground/60 hover:text-indigo-500 transition-colors"

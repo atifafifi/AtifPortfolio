@@ -12,7 +12,7 @@ export function Footer() {
         </div>
         <div className="flex items-center space-x-1">
           <Button variant="ghost" size="icon" asChild>
-            <a href="https://github.com/atifafifi" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/atsen1701" target="_blank" rel="noopener noreferrer">
               <Github className="h-4 w-4" />
               <span className="sr-only">GitHub</span>
             </a>
