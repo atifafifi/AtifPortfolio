@@ -36,7 +36,7 @@ const resumeData = {
     email: "atifafifi16@gmail.com",
     phone: "+6014-6975630",
     location: "Penang, Malaysia",
-    website: "atifafifi.dev",
+    website: "https://atif-portfolio-zeta.vercel.app/",
     linkedin: "linkedin.com/in/atifafifi",
     github: "github.com/atsen1701",
   },
@@ -85,17 +85,12 @@ const resumeData = {
     },
   ],
   skills: {
-    frontend: ["React", "Next.js", "TypeScript", "Vue.js", "Tailwind CSS", "HTML5", "CSS", "JavaScript", "Three.js","Blazor","Bootstrap"],
+    frontend: ["React", "Next.js", "TypeScript", "Vue.js", "Tailwind CSS", "HTML5", "CSS", "JavaScript", "Three.js","Blazor","Bootstrap","ShadCN"],
     backend: ["Node.js", "Python", "PHP", "Java", "JavaScript", "REST APIs", "Laravel","C#"],
     database: ["FireBase", "MongoDB", "Redis", "MySQL", "Prisma"],
     cloud: ["AWS", "Vercel", "Docker", "Kubernetes", "CI/CD"],
-    tools: ["Git", "Figma", "VS Code"],
+    tools: ["Git", "Figma", "VS Code","SimAi","Power Automate","N8N","Zapier"],
   },
-  // certifications: [
-  //   "AWS Certified Developer Associate",
-  //   "Google Cloud Professional Developer",
-  //   "MongoDB Certified Developer",
-  // ],
 }
 
 export function ResumeModal() {
@@ -118,10 +113,10 @@ export function ResumeModal() {
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader className="space-y-4">
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-green-500 bg-clip-text text-transparent">
               {resumeData.personalInfo.name}
             </DialogTitle>
-            <Button size="sm" asChild className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600">
+            <Button size="sm" asChild className="bg-gradient-to-r from-indigo-500 to-green-500 hover:from-indigo-600 hover:to-green-600">
               <a href="/Resume_A'tif.pdf" download className="flex items-center gap-2">
                 <Download className="h-4 w-4" />
                 Download PDF

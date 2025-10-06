@@ -79,13 +79,13 @@ export function CustomCursor() {
           <defs>
             <radialGradient id="planetGradient" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="50%" stopColor="#a855f7" />
-              <stop offset="100%" stopColor="#7c3aed" />
+              <stop offset="50%" stopColor="#22c55e" />
+              <stop offset="100%" stopColor="#16a34a" />
             </radialGradient>
             <radialGradient id="flameGradient" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#e879f9" />
-              <stop offset="50%" stopColor="#a855f7" />
-              <stop offset="100%" stopColor="#581c87" />
+              <stop offset="0%" stopColor="#4ade80" />
+              <stop offset="50%" stopColor="#22c55e" />
+              <stop offset="100%" stopColor="#15803d" />
             </radialGradient>
           </defs>
           {/* Planet core */}

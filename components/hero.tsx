@@ -17,7 +17,7 @@ export function Hero() {
             className="mb-8"
           >
             <div className="relative w-32 h-32 mx-auto mb-6">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 p-1">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-green-500 p-1">
                 <div className="relative w-full h-full rounded-full overflow-hidden">
                   <Image
                     src="/Resume.jpg"
@@ -30,7 +30,7 @@ export function Hero() {
               </div>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-indigo-500 to-green-500 bg-clip-text text-transparent">
                 A'tif A'fifi Bin Mohd Zukhi
               </span>
             </h1>
@@ -51,7 +51,7 @@ export function Hero() {
           >
             <Button
               asChild
-              className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
+              className="bg-gradient-to-r from-indigo-500 to-green-500 hover:from-indigo-600 hover:to-green-600"
             >
               <a href="#contact">Get in Touch</a>
             </Button>

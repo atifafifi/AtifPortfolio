@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
+// import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ResumeModal } from "./resume-modal"
@@ -32,7 +32,7 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           <a
             href="#"
-            className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent hover:from-indigo-600 hover:to-purple-600 transition-all"
+            className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-green-500 bg-clip-text text-transparent hover:from-indigo-600 hover:to-green-600 transition-all"
           >
             A'tif
           </a>

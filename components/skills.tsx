@@ -250,7 +250,7 @@ export function Skills() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-indigo-500 to-green-500 bg-clip-text text-transparent">
             Technical Skills
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">

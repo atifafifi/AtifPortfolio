@@ -38,8 +38,8 @@ export function AnimatedBackground() {
         positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta)
         positions[i3 + 2] = radius * Math.cos(phi)
 
-        // Galaxy colors: whites, blues, purples
-        colors[i3] = colorObj.r + (Math.random() - 0.5) * 0.2
+        // Galaxy colors: whites, blues, greens
+        colors[i3] = colorObj.g + (Math.random() - 0.5) * 0.2
         colors[i3 + 1] = colorObj.g + (Math.random() - 0.5) * 0.2
         colors[i3 + 2] = colorObj.b + (Math.random() - 0.5) * 0.2
 
@@ -68,8 +68,8 @@ export function AnimatedBackground() {
 
     // Create multiple star layers for galaxy effect
     const stars1 = createStarSystem(3000, 0.02, "#ffffff", 10) // White stars - main field
-    const stars2 = createStarSystem(2000, 0.015, "#87ceeb", 8) // Light blue - distant
-    const stars3 = createStarSystem(1500, 0.025, "#9370db", 6) // Purple - closer
+    const stars2 = createStarSystem(2000, 0.015, "#90ee90", 8) // Light green - distant
+    const stars3 = createStarSystem(1500, 0.025, "#32cd32", 6) // Green - closer
 
     scene.add(stars1, stars2, stars3)
 

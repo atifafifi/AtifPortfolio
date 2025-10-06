@@ -31,7 +31,7 @@ export function SkillProgress({ name, level, icon: Icon, description }: SkillPro
             </div>
             <Progress
               value={level}
-              className="h-2 bg-indigo-500/20 [&>div]:bg-gradient-to-r [&>div]:from-indigo-500 [&>div]:to-purple-500"
+              className="h-2 bg-indigo-500/20 [&>div]:bg-gradient-to-r [&>div]:from-indigo-500 [&>div]:to-green-500"
             />
           </div>
         </TooltipTrigger>
