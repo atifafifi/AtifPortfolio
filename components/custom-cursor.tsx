@@ -68,39 +68,38 @@ export function CustomCursor() {
         }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
-        {/* Fish body */}
-        <motion.div
-          className="w-8 h-4 bg-indigo-500 rounded-full"
-          animate={{
-            scaleX: isHovering ? 1.2 : 1,
-          }}
-        />
-        {/* Fish tail */}
-        <motion.div
-          className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-indigo-500"
-          style={{
-            clipPath: "polygon(0 0, 100% 50%, 0 100%)",
-          }}
-          animate={{
-            rotate: [0, 10, 0],
-          }}
-          transition={{
-            duration: 0.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        {/* Fish eye */}
-        <motion.div
-          className="absolute left-2 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full"
+        <motion.svg
+          viewBox="0 0 100 100"
+          className="w-12 h-12"
           animate={{
             scale: isHovering ? 1.2 : 1,
           }}
-        />
-        {/* Fish pupil */}
-        <motion.div
-          className="absolute left-2.5 top-1/2 -translate-y-1/2 w-1 h-1 bg-black rounded-full"
-        />
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          <defs>
+            <radialGradient id="planetGradient" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="50%" stopColor="#a855f7" />
+              <stop offset="100%" stopColor="#7c3aed" />
+            </radialGradient>
+            <radialGradient id="flameGradient" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#e879f9" />
+              <stop offset="50%" stopColor="#a855f7" />
+              <stop offset="100%" stopColor="#581c87" />
+            </radialGradient>
+          </defs>
+          {/* Planet core */}
+          <circle cx="50" cy="50" r="20" fill="url(#planetGradient)" />
+          {/* Encapsulating flames */}
+          <path d="M50 20 Q60 10 70 20 Q60 30 50 20" fill="url(#flameGradient)" opacity="0.8" />
+          <path d="M50 80 Q60 90 70 80 Q60 70 50 80" fill="url(#flameGradient)" opacity="0.8" />
+          <path d="M20 50 Q10 40 20 30 Q30 40 20 50" fill="url(#flameGradient)" opacity="0.8" />
+          <path d="M80 50 Q90 40 80 30 Q70 40 80 50" fill="url(#flameGradient)" opacity="0.8" />
+          <path d="M35 25 Q45 15 55 25 Q45 35 35 25" fill="url(#flameGradient)" opacity="0.6" />
+          <path d="M35 75 Q45 85 55 75 Q45 65 35 75" fill="url(#flameGradient)" opacity="0.6" />
+          <path d="M65 25 Q75 15 85 25 Q75 35 65 25" fill="url(#flameGradient)" opacity="0.6" />
+          <path d="M65 75 Q75 85 85 75 Q75 65 65 75" fill="url(#flameGradient)" opacity="0.6" />
+        </motion.svg>
       </motion.div>
     </motion.div>
   )
