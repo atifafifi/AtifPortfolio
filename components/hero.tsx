@@ -20,7 +20,7 @@ export function Hero() {
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 p-1">
                 <div className="relative w-full h-full rounded-full overflow-hidden">
                   <Image
-                    src="/resume.jpg"
+                    src="/Resume.jpg"
                     alt="A'tif A'fifi"
                     fill
                     className="object-cover"
@@ -75,7 +75,7 @@ export function Hero() {
               <Github className="h-6 w-6" />
             </a>
             <a
-              href="https://linkedin.com/in/atifafifi"
+              href="https://www.linkedin.com/in/a-tif-a-fifi-mohd-zukhi-95535b313?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground/60 hover:text-indigo-500 transition-colors"

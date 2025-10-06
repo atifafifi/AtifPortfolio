@@ -63,6 +63,19 @@ export function Projects() {
       ],
       github: "https://github.com/atsen1701/MemberShip",
     },
+    {
+      "title": "Personal Portfolio Website",
+      "description": "A responsive and modern personal portfolio showcasing my projects, skills, and professional experience. Built for fast loading and a clean, utility-first design aesthetic.",
+      "image": "/Image/portfolio.png",
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Next.js (Optional, if used for routing/hosting)",
+        "Framer Motion (for animations)"
+      ],
+      "github": "https://github.com/atsen1701/AtifSecPortfolio"
+    }
   ];
 
   return (
