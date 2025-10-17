@@ -75,7 +75,23 @@ export function Projects() {
         "Framer Motion (for animations)"
       ],
       "github": "https://github.com/atsen1701/AtifSecPortfolio"
+    },
+
+       {
+      "title": "Vanadis Heart",
+      "description": "Vanadis Hearth is envisioned as a dedicated, orange-themed culinary sanctuary built with React and TypeScript, offering users a centralized platform to manage their most cherished recipes. The application uses Firebase Firestore to securely preserve and organize private, user-created recipes, while simultaneously featuring a Discover view that will integrate with external public APIs (like TheMealDB) to allow users to explore and import new global cuisine ideas. The overall design prioritizes a responsive, seamless user experience that connects local cooking tradition with the wider world of food discovery.",
+      "image": "/Image/vanadisHeart.jpg",
+      "technologies": [
+        "ReactJS",
+        "TypeScript",
+        "CSS",
+        "Vite (Optional, if used for routing/hosting)",
+        "PostGresSQL"
+      ],
+      "github": "https://github.com/atifafifi/VanadisHeart"
     }
+
+    
   ];
 
   return (
